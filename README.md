@@ -36,7 +36,7 @@ Before starting, ensure you have the following installed and configured:
 ├── terraform.tfvars   
 ├── .gitignore                           
 ├── README.md              
-├── modules/                   # 
+├── modules/                    
 │   ├── compute/
 │   │   ├── main.tf
 │   │   ├── outputs.tf
