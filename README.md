@@ -6,6 +6,8 @@ This repository contains Terraform infrastructure code with automated deployment
 
 Before starting, ensure you have the following installed and configured:
 
+### Workflow Dig
+
 ### Required Software
 - **Git** (v2.30+)
 - **Terraform** (v1.0+)
@@ -94,7 +96,6 @@ pre-commit install
 
 ### 3. Local Development Setup
 
-```bash
 # Initialize Terraform
 terraform init
 
@@ -109,11 +110,10 @@ tfsec .
 
 # Plan infrastructure changes
 terraform plan -var-file="environments/dev.tfvars"
-```
 
 ### 4. Feature Development Workflow
 
-```bash
+
 # Start new feature
 git checkout develop
 git pull origin develop
@@ -130,7 +130,6 @@ git commit -m ""
 
 ### 5. Release Workflow
 
-```bash
 # Create release branch from develop
 git checkout develop
 git pull origin develop
@@ -146,9 +145,6 @@ git push -u origin release/v1.2.0
 
 # Create PR to main for production deployment
 # After testing, merge to main and develop
-```
-
-
 
 ## Jenkins Setup
 
@@ -175,26 +171,26 @@ Password: [Your Git Token/Password]
 ```
 
 #### Terraform Cloud Token (if using)
-```
+
 Kind: Secret text
 ID: terraform-cloud-token
 Description: Terraform Cloud API token
 Secret: [Your Terraform Cloud Token]
-```
+
 
 ### 2. Configure Global Tools
 
 Navigate to `Manage Jenkins > Global Tool Configuration`:
 
 #### Terraform Installation
-```
+
 Name: Terraform-Latest
 Install automatically: Yes
 Version: Latest
-```
+
 
 #### Git Installation
-```
+
 Name: Default
 Path to Git executable: git
 
@@ -208,18 +204,6 @@ Configure these in `Manage Jenkins > Configure System > Global Properties`:
 
 pipeline {
     agent any
-    
-    parameters {
-        choice(
-            name: 'ENVIRONMENT',
-            choices: ['dev', 'staging', 'prod'],
-            description: 'Environment to deploy'
-        )
-        booleanParam(
-            name: 'DESTROY',
-            defaultValue: false,
-            description: 'Destroy infrastructure instead of applying'
-        )
     }
     
     stages {
@@ -237,8 +221,6 @@ pipeline {
             }
         }
         
-        // Additional stages...
-    }
     
     post {
         always {
@@ -247,7 +229,7 @@ pipeline {
         
     }
 }
-```
+
 
 ## Multi-Environment Support
 
@@ -267,31 +249,29 @@ Create separate variable files for each environment:
 ### Common Git Issues
 
 #### Merge Conflicts
-```bash
+
 # Resolve merge conflicts
 git status
 # Edit conflicted files
 git add .
 git commit -m "resolve: merge conflict in terraform configuration"
-```
+
 
 #### Reset Branch to Remote
-```bash
+
 # Reset local branch to match remote
 git fetch origin
 git reset --hard origin/main
-```
 
-```
 
 #### Backend Initialization Errors
-```bash
+
 # Reconfigure backend
 terraform init -reconfigure
 
 # Migrate state to new backend
 terraform init -migrate-state
-```
+
 
 ### Jenkins Pipeline Issues
 
@@ -307,7 +287,7 @@ terraform init -migrate-state
 
 ### Debug Commands
 
-```bash
+
 # Enable detailed Terraform logging
 export TF_LOG=DEBUG
 export TF_LOG_PATH=./terraform.log
@@ -324,5 +304,5 @@ terraform fmt -recursive .
 
 # Security scan
 tfsec . --format json > security-report.json
-```
+
 
