@@ -12,29 +12,29 @@ This document describes a highly available, scalable 3-tier web application arch
 Components
 External Access
 
-Route 53: DNS service routing traffic from example.com
+## Route 53: DNS service routing traffic from example.com
 SSL/TLS: Secure connections terminated at the load balancer
 
-Load Balancing Layer
+## Load Balancing Layer
 
 Network Load Balancer: Distributes incoming traffic across multiple targets
 Internal Application Load Balancer: Routes requests to application servers
 Located in Public and Webserver Subnets respectively
 
-Application Layer
+## Application Layer
 
 Auto Scaling Group (ASG): Automatically scales application servers based on demand
 Application Servers: Host the main application logic
 Availability Zone: Deployed across multiple AZs for high availability
 Secured in private Application Server Subnets
 
-Database Layer
+## Database Layer
 
 Primary Database (M): Main database instance
 Read Replica (S): Secondary database for read operations and failover
 Isolated in dedicated Database Subnets
 
-Network & Security
+## Network & Security
 
 VPC: Virtual Private Cloud (10.0.0.0/24) providing network isolation
 Subnets:
@@ -47,7 +47,7 @@ Database Subnet: Database instances
 
 VPC Flow Logs: Network traffic monitoring and analysis
 
-Architecture Benefits
+## Architecture Benefits
 
 High Availability: Multi-AZ deployment with redundant components
 Scalability: Auto Scaling Groups handle traffic fluctuations
@@ -55,7 +55,7 @@ Security: Multi-tier subnet isolation and private application/database layers
 Performance: Load balancing and read replicas optimize response times
 Monitoring: VPC Flow Logs provide network visibility
 
-Deployment Considerations
+## Deployment Considerations
 
 Ensure proper security group configurations
 Configure health checks for load balancers
