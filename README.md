@@ -2,6 +2,10 @@
 
 This repository contains Terraform infrastructure code with automated deployment using Jenkins pipeline, following GitFlow branching strategy and comprehensive CI/CD practices.
 
+## Project Diagram
+
+![image_alt](https://github.com/mokshadadeshmukh15/Terraform-Jenkins-Aws-infrastructure/blob/01e48168c8056dfa35dfc2174bdfd9542f8d75b8/Project-design.jpg?raw=true)
+
 ## Prerequisites
 
 Before starting, ensure you have the following installed and configured:
