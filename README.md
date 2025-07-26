@@ -6,11 +6,39 @@ This repository contains Terraform infrastructure code with automated deployment
 
 ![image_alt](https://github.com/mokshadadeshmukh15/Terraform-Jenkins-Aws-infrastructure/blob/01e48168c8056dfa35dfc2174bdfd9542f8d75b8/Project-design.jpg?raw=true)
 
+## AWS Architecture Overview
+Architecture Diagram This document describes a highly available, scalable 3-tier web application architecture deployed on AWS. Components External Access
+
+Route 53: DNS service routing traffic from example.com
+SSL/TLS: Secure connections terminated at the load balancer
+
+##  Load Balancing Layer
+Network Load Balancer: Distributes incoming traffic across multiple targets Internal Application Load Balancer: Routes requests to application servers Located in Public and Webserver Subnets respectively
+
+## Application Layer
+Auto Scaling Group (ASG): Automatically scales application servers based on demand Application Servers: Host the main application logic Availability Zone: Deployed across multiple AZs for high availability Secured in private Application Server Subnets
+
+## Database Layer
+Primary Database (M): Main database instance Read Replica (S): Secondary database for read operations and failover Isolated in dedicated Database Subnets
+
+## Network & Security
+VPC: Virtual Private Cloud (10.0.0.0/24) providing network isolation Subnets:
+
+Public Subnet: Internet-facing load balancer Webserver Subnet: Internal load balancer Application Server Subnet: Application instances Database Subnet: Database instances
+
+VPC Flow Logs: Network traffic monitoring and analysis
+
+## Architecture Benefits
+High Availability: Multi-AZ deployment with redundant components Scalability: Auto Scaling Groups handle traffic fluctuations Security: Multi-tier subnet isolation and private application/database layers Performance: Load balancing and read replicas optimize response times Monitoring: VPC Flow Logs provide network visibility
+
+## Deployment Considerations
+Ensure proper security group configurations Configure health checks for load balancers Set up appropriate scaling policies Implement backup strategies for databases Monitor costs and optimize resource usage
+
 ## Prerequisites
 
 Before starting, ensure you have the following installed and configured:
 
-### Workflow Dig
+
 
 ### Required Software
 - **Git** (v2.30+)
