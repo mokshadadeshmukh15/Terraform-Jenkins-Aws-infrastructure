@@ -66,7 +66,6 @@ Monitor costs and optimize resource usage
 
 Before starting, ensure you have the following installed and configured:
 
-### Workflow Dig
 
 ### Required Software
 - **Git** (v2.30+)
